@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse, response
-from Django_Neo4j.InkItUp.models import *
+from InkItUp.models import *
 from django.views.decorators.csrf import csrf_exempt
 import json
 

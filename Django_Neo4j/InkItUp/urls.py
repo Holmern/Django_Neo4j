@@ -1,8 +1,8 @@
-from Django_Neo4j.InkItUp.views.connectors import connectAaTP
-from Django_Neo4j.InkItUp.views.Tattooparlor import *
-from Django_Neo4j.InkItUp.views.customer import *
+from InkItUp.views.connectors import connectAaTP
+from InkItUp.views.Tattooparlor import *
+from InkItUp.views.customer import *
 from django.conf.urls import url
-from Django_Neo4j.InkItUp.views import *
+from InkItUp.views import *
 from django.urls import path
 urlpatterns =[
     path('customer', customerDetails),

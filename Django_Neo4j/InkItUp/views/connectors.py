@@ -1,5 +1,5 @@
 from django.http import JsonResponse, response
-from Django_Neo4j.InkItUp.models import *
+from InkItUp.models import *
 from django.views.decorators.csrf import csrf_exempt
 import json
 #Herinde har vi vores connections mellem enheder - Eksempel connect AaTP = Artist And TattooParlor
