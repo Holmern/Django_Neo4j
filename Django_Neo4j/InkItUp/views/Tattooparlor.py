@@ -16,7 +16,7 @@ import json
 
 #____________Get tattooparlors____________
 
-def getAlltattooparlors(request):
+def getAllTattooparlors(request):
     if request.method == 'GET':
         try:
             tattooparlors = Tattooparlor.nodes.all()
