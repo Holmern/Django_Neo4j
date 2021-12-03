@@ -1,5 +1,5 @@
 from neomodel import StructuredNode, StringProperty, IntegerProperty, UniqueIdProperty, RelationshipTo
-from neomodel.properties import DateProperty, DateTimeFormatProperty, FloatProperty
+from neomodel.properties import DateProperty, DateTimeFormatProperty, DateTimeProperty, FloatProperty
 from neomodel.relationship import StructuredRel
 from neomodel.relationship_manager import RelationshipFrom
 from datetime import date
@@ -21,7 +21,7 @@ class Customer(StructuredNode):
 
 class Appointment(StructuredNode):
     idappointment = UniqueIdProperty()
-    datetime=DateProperty(required=True, index=True)
+    datetime=StringProperty(required=True, index=True)
     sessionlenght=IntegerProperty(index=True, default=1)
 
     #Relationships
@@ -45,7 +45,7 @@ class Ink(StructuredNode):
     batchnumber = IntegerProperty(unique_index=True, required=True)
     brand = StringProperty(index=True, required=True)
     colorcode = StringProperty(index=True, required=True)
-    experationdate = DateProperty(required=True)
+    experationdate = StringProperty(required=True)
     price = FloatProperty(index=True, required=True)
 
     #Relationships

@@ -6,8 +6,8 @@ from InkItUp.views import *
 from django.urls import path
 urlpatterns =[
     path('customer', customerDetails),
-    path('getAllCustomers', getAllCustomers),
+    path('getallcustomers', getAllCustomers),
     path('tattooparlor', tattooparlorDetails),
-    path('getAllTattooparlors', getAllTattooparlors),
-    path('connectAaTP', connectAaTP)
+    path('getalltattooparlors', getAllTattooparlors),
+    path('connectaatp', connectAaTP)
 ]
