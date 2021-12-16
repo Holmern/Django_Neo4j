@@ -31,12 +31,12 @@ def getAllappointments(request):
 
 #____CRUD appointment____
 @csrf_exempt
-def appointmentDetails(request):
-#____Get appointment by Name____
+def appointmentDetails(request, appointmentid):
+#____Get appointment by ID____
     if request.method == 'GET':
-        name = request.GET.get('name', ' ')
+        #name = request.GET.get('name', ' ')
         try:
-            appointment = Appointment.nodes.get(name=name)
+            appointment = Appointment.nodes.get(appointmentid=appointmentid)
             response = {
                     "idappointment": appointment.idappointment,
                     "date": appointment.date,
