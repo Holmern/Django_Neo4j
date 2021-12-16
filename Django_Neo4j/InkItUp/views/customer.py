@@ -28,10 +28,10 @@ def getAllCustomers(request):
 
 #____CRUD CUSTOMER____
 @csrf_exempt
-def customerDetails(request):
+def customerDetails(request, name):
 #____Get Customer by Name____
     if request.method == 'GET':
-        name = request.GET.get('name', ' ')
+        #cpr = request.GET.get('cpr', ' ')
         try:
             customer = Customer.nodes.get(name=name)
             response = {

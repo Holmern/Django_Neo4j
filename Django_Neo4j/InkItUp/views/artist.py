@@ -31,10 +31,10 @@ def getAllartists(request):
 
 #____CRUD artist____
 @csrf_exempt
-def artistDetails(request):
+def artistDetails(request, name):
 #____Get artist by Name____
     if request.method == 'GET':
-        name = request.GET.get('name', ' ')
+        #name = request.GET.get('name', ' ')
         try:
             artist = Artist.nodes.get(name=name)
             response = {
