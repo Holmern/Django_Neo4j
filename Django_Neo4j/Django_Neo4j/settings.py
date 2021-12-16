@@ -92,6 +92,7 @@ NEOMODEL_FORCE_TIMEZONE = False
 NEOMODEL_ENCRYPTED_CONNECTION = False
 NEOMODEL_MAX_POOL_SIZE = 50
 NEOMODEL_NEO4J_BOLT_URL = os.environ.get('NEO4J_BOLT_URL', 'bolt://neo4j:root1234@localhost:7687')
+config.DATABASE_URL = 'bolt://neo4j:neo4j@localhost:7687'
 
 
 

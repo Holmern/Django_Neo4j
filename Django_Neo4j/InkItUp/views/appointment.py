@@ -19,7 +19,8 @@ def getAllappointments(request):
             for appointment in appointments :
                 obj = {
                     "idappointment": appointment.idappointment,
-                    "datetime": appointment.datetime,
+                    "date": appointment.date,
+                    "time": appointment.time,
                     "sessionlenght": appointment.sessionlenght,
                 }
                 response.append(obj)
@@ -38,7 +39,8 @@ def appointmentDetails(request):
             appointment = Appointment.nodes.get(name=name)
             response = {
                     "idappointment": appointment.idappointment,
-                    "datetime": appointment.datetime,
+                    "date": appointment.date,
+                    "time": appointment.time,
                     "sessionlenght": appointment.sessionlenght,
             }
             return JsonResponse(response, safe=False)
@@ -50,10 +52,11 @@ def appointmentDetails(request):
     if request.method == 'POST':
         json_data = json.loads(request.body)
         idappointment = json_data ['idappointment']
-        datetime = json_data['datetime']
+        date = json_data['date']
+        time = json_data['time']
         sessionlenght = int(json_data['sessionlenght'])
         try:
-            appointment = Appointment(idappointment=idappointment, datetime=datetime, sessionlenght=sessionlenght)
+            appointment = Appointment(idappointment=idappointment, date=date, time=time, sessionlenght=sessionlenght)
             appointment.save()
             response = {
                 "cpr": appointment.cpr,
@@ -66,19 +69,22 @@ def appointmentDetails(request):
     if request.method == 'PUT':
         json_data = json.loads(request.body)
         idappointment = json_data ['idappointment']
-        datetime = json_data['datetime']
+        date = json_data['date']
+        time = json_data['time']
         sessionlenght = int(json_data['sessionlenght'])
         
         #TVIVL HER
         #uid = json_data['uid']
         try:
             appointment = Appointment.nodes.get(idappointment=idappointment)
-            appointment.datetime
+            appointment.date
+            appointment.time
             appointment.sessionlenght
             appointment.save()
             response = {
                 "idappointment": appointment.idappointment,
-                "datetime": appointment.datetime,
+                "date": appointment.date,
+                "time": appointment.time,
                 "sessionlenght": appointment.sessionlenght,
             }
             return JsonResponse(response, safe=False)

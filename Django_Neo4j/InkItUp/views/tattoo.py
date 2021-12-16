@@ -7,18 +7,18 @@ import json
 # Create your views here.
 
 
-#____________Get Customers____________
+#____________Get tattoos____________
 
-def getAllCustomers(request):
+def getAlltattoos(request):
     if request.method == 'GET':
         try:
-            customers = Customer.nodes.all()
+            tattoos = Tattoo.nodes.all()
             response = []
-            for customer in customers :
+            for tattoo in tattoos :
                 obj = {
-                    "cpr": customer.cpr,
-                    "name": customer.name,
-                    "email": customer.email
+                    "description": tattoo.description,
+                    "idtattoo":tattoo.idtattoo,
+                    "placementonbody": tattoo.placementonbody
                 }
                 response.append(obj)
             return JsonResponse(response, safe=False)
@@ -26,71 +26,71 @@ def getAllCustomers(request):
             response = {"error": "Error Occurred"}
             return JsonResponse(response, safe=False)
 
-#____CRUD CUSTOMER____
+#____CRUD tattoo____
 @csrf_exempt
-def customerDetails(request):
-#____Get Customer by Name____
+def tattooDetails(request):
+#____Get tattoo by ID____
     if request.method == 'GET':
-        name = request.GET.get('name', ' ')
+        idtattoo = request.GET.get('idtattoo', ' ')
         try:
-            customer = Customer.nodes.get(name=name)
+            tattoo = Tattoo.nodes.get(idtattoo=idtattoo)
             response = {
-                "cpr": customer.cpr,
-                "name": customer.name,
-                "email": customer.email
+                "description": tattoo.description,
+                "idtattoo":tattoo.idtattoo,
+                "placementonbody": tattoo.placementonbody
             }
             return JsonResponse(response, safe=False)
         except :
             response = {"error": "Error Occurred"}
             return JsonResponse(response, safe=False)
 
-#____ Create one Customer ____
+#____ Create one tattoo ____
     if request.method == 'POST':
         json_data = json.loads(request.body)
-        cpr = int(json_data['cpr'])
-        name = json_data['name']
-        email = json_data['email']
+        idtattoo = int(json_data['idtattoo'])
+        description = json_data['description']
+        placementonbody = json_data['placementonbody']
         try:
-            customer = Customer(cpr=cpr, name=name, email=email)
-            customer.save()
+            tattoo = Tattoo(idtattoo=idtattoo, description=description, placementonbody=placementonbody)
+            tattoo.save()
             response = {
-                "cpr": customer.cpr,
+                "idtattoo": tattoo.idtattoo,
             }
             return JsonResponse(response)
         except :
             response = {"error": "Error Occurred"}
             return JsonResponse(response, safe=False)
-#____Update one Customer_____
+#____Update one tattoo_____
     if request.method == 'PUT':
         json_data = json.loads(request.body)
-        cpr = int(json_data['cpr'])
-        name = json_data['name']
-        email = json_data['email']
+        idtattoo = int(json_data['idtattoo'])
+        description = json_data['description']
+        placementonbody = json_data['placementonbody']
         #TVIVL HER
         #uid = json_data['uid']
         try:
-            customer = Customer.nodes.get(cpr=cpr)
-            customer.name = name
-            customer.email = email
-            customer.save()
+            tattoo = Tattoo.nodes.get(idtattoo=idtattoo)
+            tattoo.description = description
+            tattoo.description = description
+            tattoo.save()
             response = {
-                "cpr": customer.cpr,
-                "name": customer.name,
-                "email": customer.email,
+                "description": tattoo.description,
+                "idtattoo":tattoo.idtattoo,
+                "placementonbody": tattoo.placementonbody
             }
             return JsonResponse(response, safe=False)
         except:
             response = {"error": "Error occurred"}
             return JsonResponse(response, safe=False)
 
-#____Delete Customer_____
+#____Delete tattoo_____
     if request.method == 'DELETE':
         json_data = json.loads(request.body)
-        cpr = json_data['cpr']
+        idtattoo = json_data['idtattoo']
         try: 
-            customer = Customer.nodes.get(cpr=cpr)
-            customer.delete()
-            response = {"success": "Customer Deleted"}
+            tattoo = Tattoo.nodes.get(idtattoo=idtattoo)
+            tattoo.delete()
+            response = {"success": "tattoo Deleted"}
             return JsonResponse(response, safe=False)
         except:
             response = {"error": "Error occurred"}

@@ -1,3 +1,6 @@
+from InkItUp.views.ink import getAllinks
+from InkItUp.views.artist import artistDetails
+from InkItUp.views.artist import getAllartists
 from InkItUp.views.connectors import connectAaTP
 from InkItUp.views.Tattooparlor import *
 from InkItUp.views.customer import *
@@ -9,5 +12,9 @@ urlpatterns =[
     path('getallcustomers', getAllCustomers),
     path('tattooparlor', tattooparlorDetails),
     path('getalltattooparlors', getAllTattooparlors),
-    path('connectaatp', connectAaTP)
+    path('connectaatp', connectAaTP),
+    path('getallartists', getAllartists),
+    path('artistdetails', artistDetails),
+    path('getallinks', getAllinks),
+
 ]

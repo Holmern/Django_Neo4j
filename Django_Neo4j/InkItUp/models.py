@@ -21,7 +21,8 @@ class Customer(StructuredNode):
 
 class Appointment(StructuredNode):
     idappointment = UniqueIdProperty()
-    datetime=StringProperty(required=True, index=True)
+    date=StringProperty(required=True, index=True)
+    time=StringProperty(required=True, index=True)
     sessionlenght=IntegerProperty(index=True, default=1)
 
     #Relationships
@@ -58,7 +59,7 @@ class Producer(StructuredNode):
     adress = StringProperty(index=True, required=True)
 
     #Relationships
-    ink = RelationshipTo(Ink, 'PRODUCES')
+
 
 class Supplier(StructuredNode):
     cvr = IntegerProperty(unique_index=True, required=True)
